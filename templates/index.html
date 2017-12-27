@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="col-12 col-md-9">
+    <p class="float-right d-md-none">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+    <div class="row" style="margin-top: 50px">
+        {% for product in products %}
+
+    <div class="card col-6 col-lg-3" >
+        <img class="card-img-top" src="{{ product.image.url }}" height="200"  alt="Card image cap">
+        <div class="card-body">
+            <h4 class="card-title">{{ product.name }}</h4>
+            <p class="card-text">{{ product.description }}</p>
+            <a href="#" class="btn btn-primary">More</a>
+        </div>
+    </div>
+            {% endfor %}
+</div>
+    </div>
+{#        {% for category in categories %}#}
+{#        hi#}
+{#        <h1>{{ category.name }}</h1>#}
+{##}
+{#    {% endfor %}#}
+{% endblock %}
