@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="col-12 col-md-9">
+    <p class="float-right d-md-none">
+            <button type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+    <div class="row" style="margin-top: 50px">
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+      <div class="row">
+      <div class="col-3">
+        <img class="card-img-top" src="{{ product.image.url }}" height="200"  alt="Card image cap">
+      </div>
+      <div class="col-6">
+            <h4 class="card-title">{{ product.name }} <span class="badge-info" style="padding: 5px;">{{ product.cost }}$
+            </span></h4>
+
+            <p class="card-text">{{ product.description }}</p>
+            {% for cat in product.category.all %}
+            <span class="card-text badge-dark" style="padding: 5px; margin: 2px">{{ cat.name }}</span>
+          {% endfor %}
+            <p class="card-text">In Stock <span class="badge-info" style="padding: 5px;">{{ product.numberOfProduct }}</span></p>
+            <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'product' product.id %}">
+                {% csrf_token %}
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Order</button>
+            </form>
+        </div>
+          </div>
+  </div>
+    </div>
+    </div>
+</div>
+
+{% endblock %}
+

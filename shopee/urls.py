@@ -18,11 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
-from shop.views import index_page
+from shop.views import index_page, product_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_page, name='index'),
+    path('<int:pk>/', product_page, name='product'),
 ]
 
 if settings.DEBUG:

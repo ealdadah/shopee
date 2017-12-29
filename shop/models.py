@@ -25,7 +25,7 @@ class Product(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
-    product = models.ManyToManyField(Product, related_name="orders")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="orders", null=True)
     total_cost = models.IntegerField(blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     delivery_date = models.DateTimeField(blank=True)
